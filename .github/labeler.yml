@@ -1,0 +1,26 @@
+feat:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "src/**/*"
+CI:
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/**
+docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/**.md"
+          - "**/**.mdx"
+vscode-settings:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".vscode/**"
+packages:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/package.json"
+lint-formatting:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/.eslintrc.json"
+          - "**/.prettierrc.json"

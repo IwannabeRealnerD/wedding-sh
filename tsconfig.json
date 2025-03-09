@@ -1,0 +1,16 @@
+{
+	"extends": "./.svelte-kit/tsconfig.json",
+	"compilerOptions": {
+		"allowJs": false,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true,
+		"strictNullChecks": true,
+		"module": "esnext",
+		"ignoreDeprecations": "5.0"
+	},
+	"exclude": ["node_modules,tsconfig.json"]
+}

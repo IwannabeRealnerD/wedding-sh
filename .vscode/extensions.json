@@ -1,0 +1,13 @@
+{
+	"recommendations": [
+		"dbaeumer.vscode-eslint",
+		"bradlc.vscode-tailwindcss",
+		"austenc.tailwind-docs",
+		"lokalise.i18n-ally"
+	],
+	"unwantedRecommendations": [
+		"esbenp.prettier-vscode",
+		"rvest.vs-code-prettier-eslint",
+		"streetsidesoftware.code-spell-checker"
+	]
+}
