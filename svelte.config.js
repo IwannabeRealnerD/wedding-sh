@@ -7,7 +7,7 @@ const config = {
 		adapter: adapter(),
 		alias: { $routes: "src/routes", $settings: "src/settings" },
 		paths: {
-			base: process.env.NODE_ENV === "production" ? "/khanne-sh" : ""
+			base: process.env.NODE_ENV === "production" ? "/wedding-sh" : ""
 		}
 	},
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
