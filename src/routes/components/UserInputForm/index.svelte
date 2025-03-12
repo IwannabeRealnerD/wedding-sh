@@ -1,9 +1,10 @@
 <script lang="ts">
+	import clsx from "clsx";
 	import { tick } from "svelte";
 
 	import { COMMANDS } from "$lib/constants/command";
 	import type { CommandType } from "$lib/types/storage";
-	import { historyLengthCutter, isValidCommand } from "$lib/utils/command";
+	import { historyLengthCutter, commandValidator } from "$lib/utils/command";
 
 	import AutoComplete from "./AutoComplete.svelte";
 	import {
@@ -57,9 +58,13 @@
 		await tick();
 		window.scrollTo(0, document.body.scrollHeight);
 	};
+
+	$effect(() => {
+		console.log(commandValidator(inputCommand, availableCommands));
+	});
 </script>
 
-<form onsubmit={commandOnSubmit} autocomplete="off" class="formContainer">
+<form onsubmit={commandOnSubmit} autocomplete="off" class="flex relative py-2">
 	{#if availableCommands.length !== 0 && !isWholeCommand}
 		<AutoComplete
 			onChangeCommand={changeCommandHandler}
@@ -67,50 +72,16 @@
 			{availableCommands}
 		/>
 	{/if}
-	<p class="userInputCommand">khanne-sh :</p>
+	<p class="text-info shrink-0">
+		wedding-sh<span class="text-secondary text-sm mx-2">>></span>
+	</p>
 	<input
-		class={`inputTag ${isValidCommand(inputCommand)}`}
+		class={clsx(
+			`w-full border-none bg-transparent caret-white p-0 mb-8 focus:outline-none`,
+			commandValidator(inputCommand, availableCommands)
+		)}
 		name="command"
 		bind:value={inputCommand}
 		bind:this={inputBind}
 	/>
 </form>
-
-<style>
-	.container {
-		padding: 1rem;
-	}
-	.formContainer {
-		display: flex;
-		padding: 0.5rem 0;
-		position: relative;
-	}
-	.userInputCommand {
-		color: #57c6fe;
-		width: 6rem;
-	}
-	.commandOutput {
-		white-space: pre-wrap;
-		color: #f1f0ef;
-	}
-	.previousInput {
-		width: 100%;
-	}
-	.inputTag {
-		width: 100%;
-		border: none;
-		background-color: transparent;
-		caret-color: white;
-		padding: 0;
-		margin-bottom: 2rem;
-	}
-	.inputTag:focus {
-		outline: none;
-	}
-	.validInput {
-		color: #5af68d;
-	}
-	.invalidInput {
-		color: #fe5b56;
-	}
-</style>

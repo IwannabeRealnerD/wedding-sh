@@ -5,19 +5,13 @@ type CommandDefinition = {
 };
 
 export const COMMAND_DEFINITIONS: { [key: string]: CommandDefinition } = {
-	ABOUT: {
-		action: () =>
-			"khanne-sh is a terminal that has information about khanne(me). \n You can use 'help' command to see available commands.",
-		description: "Get information about this project",
-		name: "about"
-	},
-	BLOG: {
+	CALL: {
 		action: () => {
-			window.open("https://iwannaberealnerd.oopy.io/develog");
-			return "Opening new tabs for khanne's blog...";
+			window.open("tel:+821051200592");
+			return "Redirecting to Honggwan Jeong's phone number...";
 		},
-		description: "Open new window for khanne's blog",
-		name: "blog"
+		description: "Call Honggwan Jeong",
+		name: "call"
 	},
 	CLEAR: {
 		action: () => "",
@@ -26,26 +20,36 @@ export const COMMAND_DEFINITIONS: { [key: string]: CommandDefinition } = {
 	},
 	CONTACT: {
 		action: () =>
-			"- Email: iwannaberealnerd@gmail.com\n- Phone Number: +821051200592\n- LinkedIn: www.linkedin.com/in/honggwanjeong",
-		description: "Get khanne's contact information",
+			"- Email: iwannaberealnerd@gmail.com\n- Phone Number: +821051200592",
+		description: "Get Honggwan Jeong's contact information",
 		name: "contact"
 	},
 	GITHUB: {
 		action: () => {
-			window.open("https://github.com/IwannabeRealnerD");
-			return "Redirecting to khanne's github repositories...";
+			window.open("https://github.com/IwannabeRealnerD/wedding-sh");
+			return "Opening wedding-sh's GitHub repository in a new window...";
 		},
-		description: "Open new window for khanne's GitHub",
+		description: "Open wedding-sh's GitHub repository in a new window",
 		name: "github"
 	},
 	HELP: {
-		action: () => "",
+		action: () => {
+			return (
+				"Available Commands:\n" +
+				Object.values(COMMAND_DEFINITIONS)
+					.map((command) => `    ${command.name}: ${command.description}`)
+					.join("\n")
+			);
+		},
 		description: "Display available commands",
 		name: "help"
 	},
-	PWD: {
-		action: () => window.location.href,
-		description: "Show current URL",
-		name: "pwd"
+	MESSAGE: {
+		action: () => {
+			window.open("sms:+821051200592");
+			return "Redirecting to Honggwan Jeong's phone number...";
+		},
+		description: "Send message to Honggwan Jeong",
+		name: "message"
 	}
 };

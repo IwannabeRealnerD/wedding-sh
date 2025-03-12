@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { isValidCommand } from "$lib/utils/command";
+	import clsx from "clsx";
+
+	import { commandValidator } from "$lib/utils/command";
 
 	interface Props {
 		command: { command: string; result: string };
@@ -8,39 +10,14 @@
 	let { command }: Props = $props();
 </script>
 
-<article class="commandWrapper">
-	<div class="commandContainer">
-		<p class="userInputCommand">khanne-sh :</p>
-		<p class={`previousInput ${isValidCommand(command.command)}`}>
+<article class="border-b border-dashed border-secondary">
+	<div class="flex">
+		<p class="text-info shrink-0">
+			wedding-sh<span class="text-secondary text-sm mx-2">>></span>
+		</p>
+		<p class={clsx("w-full", commandValidator(command.command))}>
 			{command.command}
 		</p>
 	</div>
-	<p class="commandOutput">{command.result}</p>
+	<p class="whitespace-pre-wrap text-primary">{command.result}</p>
 </article>
-
-<style>
-	.commandWrapper {
-		border-bottom: dashed 1.5px #686767;
-		padding: 0.5rem 0;
-	}
-	.commandContainer {
-		display: flex;
-	}
-	.userInputCommand {
-		color: #57c6fe;
-		width: 6rem;
-	}
-	.previousInput {
-		width: 100%;
-	}
-	.commandOutput {
-		white-space: pre-wrap;
-		color: #f1f0ef;
-	}
-	.invalidInput {
-		color: #fe5b56;
-	}
-	.validInput {
-		color: #5af68d;
-	}
-</style>

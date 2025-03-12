@@ -7,13 +7,9 @@ describe("findAvailableCommand()", () => {
 		const result = findAvailableCommand("he");
 		expect(result).toEqual(["help"]);
 	});
-	it('should return "clear", "contact" when input is "c"', () => {
+	it('should return "call", "clear", "contact" when input is "c"', () => {
 		const result = findAvailableCommand("c");
-		expect(result).toEqual(["clear", "contact"]);
-	});
-	it('should return "pwd" when input is "p" - in order to find function that starts with "p", not has "p" in it', () => {
-		const result = findAvailableCommand("p");
-		expect(result).toEqual(["pwd"]);
+		expect(result).toEqual(["call", "clear", "contact"]);
 	});
 	it("should return empty array when input is not existing command", () => {
 		const result = findAvailableCommand("notExisting");

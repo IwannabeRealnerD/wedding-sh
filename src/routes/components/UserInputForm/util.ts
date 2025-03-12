@@ -32,7 +32,7 @@ export const findAvailableCommand = (inputCommand: string) => {
 
 export const outputCreator = (inputCommand: string) => {
 	const action = COMMAND_ACTIONS[inputCommand as TCommandValues];
-	return action ? action() : `khanne-sh: command not found: ${inputCommand}`;
+	return action ? action() : `wedding-sh: command not found: ${inputCommand}`;
 };
 
 export const putLocalStorageArr = (commandObj: CommandType) => {

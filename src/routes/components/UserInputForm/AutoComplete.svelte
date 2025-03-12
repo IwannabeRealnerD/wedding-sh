@@ -12,6 +12,7 @@
 
 	let props: Props = $props();
 
+	let wrapperElement: HTMLElement | undefined = $state();
 	let pElement: HTMLElement | undefined = $state();
 	let focusIndex = $state(0);
 	let isWholeCommand = $derived(
@@ -43,6 +44,7 @@
 	onMount(() => {
 		window.addEventListener("keydown", onDownArrowDown);
 	});
+
 	onDestroy(() => {
 		window.removeEventListener("keydown", onDownArrowDown);
 	});
@@ -58,12 +60,16 @@
 	});
 </script>
 
-<article style="margin-left: {leftMargin}px" class="wrapper">
-	<ul>
+<article
+	style="margin-left: {leftMargin}px"
+	class="bg-foreground absolute bottom-1/2 left-27.5 min-w-32"
+	bind:this={wrapperElement}
+>
+	<ul class="bg-white">
 		{#each props.availableCommands as command, index (command)}<li>
 				<button
-					class={clsx("suggestionContainer", {
-						activeSuggestion: index === focusIndex
+					class={clsx("p-1", {
+						"bg-[#0000ff] text-white w-full text-start": index === focusIndex
 					})}
 					onclick={() => {
 						focusIndex = index;
@@ -71,30 +77,11 @@
 				>
 			</li>{/each}
 	</ul>
-	<p bind:this={pElement} class="forCurrentInputSize" aria-hidden={true}>
+	<p
+		bind:this={pElement}
+		class="invisible absolute text-alert"
+		aria-hidden={true}
+	>
 		{props.currentInput}
 	</p>
 </article>
-
-<style>
-	.wrapper {
-		background-color: ivory;
-		position: absolute;
-		top: 50%;
-		left: 5.5rem;
-		min-width: 8rem;
-	}
-	.suggestionContainer {
-		padding: 0.3rem;
-	}
-	.activeSuggestion {
-		background-color: blue;
-		color: white;
-		width: 100%;
-		text-align: start;
-	}
-	.forCurrentInputSize {
-		visibility: hidden;
-		position: absolute;
-	}
-</style>

@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+	--color-*: initial;
+
+	--color-highlight: #5af68d;
+	--color-info: #57c6fe;
+	--color-alert: #ff3b30;
+	--color-primary: #c5c5c5;
+	--color-secondary: #686767;
+	--color-background: #282935;
+	--color-white: #ffffff;
+	--font-family-vt323: "VT323", monospace;
+	--font-family-monospace: "monospace", monospace;
+}

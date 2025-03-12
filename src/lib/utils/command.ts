@@ -1,26 +1,22 @@
-import { COMMANDS, HELP_COMMAND } from "$lib/constants/command";
+import { COMMANDS } from "$lib/constants/command";
 import type { TCommandValues } from "$lib/types/command";
 
 export const historyLengthCutter = <T>(commandArr: T[]): T[] => {
 	return commandArr.slice(-40);
 };
 
-export const isValidCommand = (userInputCommand: string) => {
+export const commandValidator = (
+	userInputCommand: string,
+	availableCommands?: string[]
+) => {
 	const isValidInput = Object.values(COMMANDS).includes(
 		userInputCommand as TCommandValues
 	);
 	if (isValidInput) {
-		return "validInput";
+		return "text-highlight";
 	}
-	return "invalidInput";
-};
-
-export const makeHelpOutput = () => {
-	let commandOutput = "Here are commands that you can use: \n";
-	Object.entries(HELP_COMMAND).forEach(([command, commandResult], index) => {
-		commandOutput = commandOutput.concat(
-			` ${index + 1}. ${command} : ${commandResult}\n`
-		);
-	});
-	return commandOutput;
+	if (availableCommands && availableCommands.length !== 0) {
+		return "text-white";
+	}
+	return "text-alert";
 };
