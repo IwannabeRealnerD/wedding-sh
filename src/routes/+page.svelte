@@ -29,7 +29,7 @@
 	<div>
 		<WelcomeMessage />
 		{#if commandArr}
-			{#each commandArr as command (command.command)}
+			{#each commandArr as command, index (`${command.command} ${index}`)}
 				<HistoryLine {command} />
 			{/each}
 		{/if}

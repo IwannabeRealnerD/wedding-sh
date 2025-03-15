@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
 	--color-*: initial;
@@ -10,6 +10,13 @@
 	--color-secondary: #686767;
 	--color-background: #282935;
 	--color-white: #ffffff;
-	--font-family-vt323: "VT323", monospace;
-	--font-family-monospace: "monospace", monospace;
+	--font-family-dunggeunmo: 'VT323', 'DungGeunMo', monospace;
+	--font-family-vt323: 'VT323', monospace;
+}
+
+@font-face {
+	font-family: 'DungGeunMo';
+	src: url('/DungGeunMo.woff2') format('woff2');
+	unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F;
+	size-adjust: 80%
 }

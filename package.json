@@ -15,7 +15,7 @@
 		"lint": "eslint . --fix --cache",
 		"test": "vitest --run",
 		"prepare": "svelte-kit sync || echo ''|| husky install",
-		"gh-pages": "pnpm build && pnpx gh-pages -d build -t true"
+		"gh-pages": "pnpm build && gh-pages -d build -t true"
 	},
 	"lint-staged": {
 		"src/**/*.{svelte,ts}": [

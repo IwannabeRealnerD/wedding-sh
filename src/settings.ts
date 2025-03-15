@@ -8,10 +8,18 @@ export const COMMAND_DEFINITIONS: { [key: string]: CommandDefinition } = {
 	CALL: {
 		action: () => {
 			window.open("tel:+821051200592");
-			return "Redirecting to Honggwan Jeong's phone number...";
+			return "Opening phone app to call khanne...";
 		},
-		description: "Call Honggwan Jeong",
+		description: "Call khanne",
 		name: "call"
+	},
+	MAP: {
+		action: () => {
+			window.open("https://map.naver.com/p/entry/place/1016525309");
+			return "Opening naver map for Nuage Garden...";
+		},
+		description: "Open naver map for Nuage Garden",
+		name: "map"
 	},
 	CLEAR: {
 		action: () => "",
@@ -20,8 +28,8 @@ export const COMMAND_DEFINITIONS: { [key: string]: CommandDefinition } = {
 	},
 	CONTACT: {
 		action: () =>
-			"- Email: iwannaberealnerd@gmail.com\n- Phone Number: +821051200592",
-		description: "Get Honggwan Jeong's contact information",
+			" Email: iwannaberealnerd@gmail.com\n  Phone Number: +821051200592",
+		description: "Get khanne's contact information",
 		name: "contact"
 	},
 	GITHUB: {
@@ -37,7 +45,7 @@ export const COMMAND_DEFINITIONS: { [key: string]: CommandDefinition } = {
 			return (
 				"Available Commands:\n" +
 				Object.values(COMMAND_DEFINITIONS)
-					.map((command) => `    ${command.name}: ${command.description}`)
+					.map((command) => `  ${command.name}: ${command.description}`)
 					.join("\n")
 			);
 		},
@@ -47,9 +55,9 @@ export const COMMAND_DEFINITIONS: { [key: string]: CommandDefinition } = {
 	MESSAGE: {
 		action: () => {
 			window.open("sms:+821051200592");
-			return "Redirecting to Honggwan Jeong's phone number...";
+			return "Opening message app to send message to khanne...";
 		},
-		description: "Send message to Honggwan Jeong",
+		description: "Send message to khanne",
 		name: "message"
 	}
 };

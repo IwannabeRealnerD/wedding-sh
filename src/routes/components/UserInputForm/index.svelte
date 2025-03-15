@@ -1,18 +1,14 @@
 <script lang="ts">
-	import clsx from "clsx";
-	import { tick } from "svelte";
+	import clsx from 'clsx';
+	import { tick } from 'svelte';
 
-	import { COMMANDS } from "$lib/constants/command";
-	import type { CommandType } from "$lib/types/storage";
-	import { historyLengthCutter, commandValidator } from "$lib/utils/command";
+	import { COMMANDS } from '$lib/constants/command';
+	import type { CommandType } from '$lib/types/storage';
+	import { historyLengthCutter, commandValidator } from '$lib/utils/command';
 
-	import AutoComplete from "./AutoComplete.svelte";
-	import {
-		clearStorageArr,
-		findAvailableCommand,
-		outputCreator,
-		putLocalStorageArr
-	} from "./util";
+	import AutoComplete from './AutoComplete.svelte';
+	import { clearStorageArr, findAvailableCommand, outputCreator, putLocalStorageArr } from './util';
+	import Prompt from '$lib/components/Prompt.svelte';
 
 	interface Props {
 		commandArr: CommandType[] | undefined;
@@ -21,22 +17,20 @@
 
 	let { commandArr = $bindable([]), inputBind = $bindable() }: Props = $props();
 
-	let inputCommand = $state("");
+	let inputCommand = $state('');
 
 	const changeCommandHandler = (command: string) => {
 		inputCommand = command;
 	};
 
 	let availableCommands = $derived(findAvailableCommand(inputCommand));
-	let isWholeCommand = $derived(
-		Object.values(COMMANDS).find((value) => value === inputCommand)
-	);
+	let isWholeCommand = $derived(Object.values(COMMANDS).find((value) => value === inputCommand));
 
 	const commandOnSubmit = async (event: SubmitEvent) => {
 		event.preventDefault();
-		if (inputCommand == "clear") {
+		if (inputCommand == 'clear') {
 			commandArr = [];
-			inputCommand = "";
+			inputCommand = '';
 			clearStorageArr();
 			return;
 		}
@@ -47,14 +41,14 @@
 		putLocalStorageArr(commandObject);
 		if (!commandArr) {
 			commandArr = [commandObject];
-			inputCommand = "";
+			inputCommand = '';
 			await tick();
 			scroll(0, document.body.scrollHeight);
 			return;
 		}
 		const cutArr = historyLengthCutter(commandArr);
 		commandArr = [...cutArr, commandObject];
-		inputCommand = "";
+		inputCommand = '';
 		await tick();
 		window.scrollTo(0, document.body.scrollHeight);
 	};
@@ -64,7 +58,7 @@
 	});
 </script>
 
-<form onsubmit={commandOnSubmit} autocomplete="off" class="flex relative py-2">
+<form onsubmit={commandOnSubmit} autocomplete="off" class="relative flex py-2">
 	{#if availableCommands.length !== 0 && !isWholeCommand}
 		<AutoComplete
 			onChangeCommand={changeCommandHandler}
@@ -72,12 +66,10 @@
 			{availableCommands}
 		/>
 	{/if}
-	<p class="text-info shrink-0">
-		wedding-sh<span class="text-secondary text-sm mx-2">>></span>
-	</p>
+	<Prompt />
 	<input
 		class={clsx(
-			`w-full border-none bg-transparent caret-white p-0 mb-8 focus:outline-none`,
+			`mb-8 w-full border-none bg-transparent p-0 caret-white focus:outline-none`,
 			commandValidator(inputCommand, availableCommands)
 		)}
 		name="command"
