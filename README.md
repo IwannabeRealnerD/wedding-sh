@@ -1,5 +1,3 @@
-## TODO
-- 한글 글씨체 추가 https://noonnu.cc/font_page/250
 
 <!-- <div align="center">
   <a href="https://github.com/IwannabeRealnerD/khanne-sh">

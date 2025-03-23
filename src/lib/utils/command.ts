@@ -1,17 +1,17 @@
-import { COMMANDS } from "$lib/constants/command";
-import type { TCommandValues } from "$lib/types/command";
+import { COMMAND_KEYS } from "$lib/constants/command";
 
 export const historyLengthCutter = <T>(commandArr: T[]): T[] => {
 	return commandArr.slice(-40);
 };
 
-export const commandValidator = (
-	userInputCommand: string,
-	availableCommands?: string[]
-) => {
-	const isValidInput = Object.values(COMMANDS).includes(
-		userInputCommand as TCommandValues
-	);
+/**
+ * Validates the user input command and returns the color utility class based on the command
+ * @param userInputCommand - User input command
+ * @param availableCommands - Available commands
+ * @returns returns the color utility class based on the command
+ */
+export const commandValidator = (userInputCommand: string, availableCommands?: string[]) => {
+	const isValidInput = COMMAND_KEYS.includes(userInputCommand);
 	if (isValidInput) {
 		return "text-highlight";
 	}

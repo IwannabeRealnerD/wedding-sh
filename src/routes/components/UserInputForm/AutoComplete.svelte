@@ -15,9 +15,7 @@
 	let wrapperElement: HTMLElement | undefined = $state();
 	let pElement: HTMLElement | undefined = $state();
 	let focusIndex = $state(0);
-	let isWholeCommand = $derived(
-		props.availableCommands[focusIndex] === props.currentInput
-	);
+	let isWholeCommand = $derived(props.availableCommands[focusIndex] === props.currentInput);
 
 	const onDownArrowDown = (KeyboardDownEvent: KeyboardEvent) => {
 		if (KeyboardDownEvent.code === "Enter" && isWholeCommand) {
@@ -62,14 +60,14 @@
 
 <article
 	style="margin-left: {leftMargin}px"
-	class="bg-foreground absolute bottom-1/2 left-27.5 min-w-32"
+	class="bg-foreground absolute bottom-1/2 left-29.5 min-w-32"
 	bind:this={wrapperElement}
 >
 	<ul class="bg-white">
 		{#each props.availableCommands as command, index (command)}<li>
 				<button
 					class={clsx("p-1", {
-						"bg-[#0000ff] text-white w-full text-start": index === focusIndex
+						"w-full bg-[#0000ff] text-start text-white": index === focusIndex
 					})}
 					onclick={() => {
 						focusIndex = index;
@@ -77,11 +75,7 @@
 				>
 			</li>{/each}
 	</ul>
-	<p
-		bind:this={pElement}
-		class="invisible absolute text-alert"
-		aria-hidden={true}
-	>
+	<p bind:this={pElement} class="text-alert invisible absolute" aria-hidden={true}>
 		{props.currentInput}
 	</p>
 </article>

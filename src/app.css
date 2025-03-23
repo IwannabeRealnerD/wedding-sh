@@ -1,8 +1,7 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
 	--color-*: initial;
-
 	--color-highlight: #5af68d;
 	--color-info: #57c6fe;
 	--color-alert: #ff3b30;
@@ -10,13 +9,27 @@
 	--color-secondary: #686767;
 	--color-background: #282935;
 	--color-white: #ffffff;
-	--font-family-dunggeunmo: 'VT323', 'DungGeunMo', monospace;
-	--font-family-vt323: 'VT323', monospace;
+	--font-family-dunggeunmo: "VT323", "DungGeunMo", monospace;
+	--font-family-vt323: "VT323", monospace;
 }
 
 @font-face {
-	font-family: 'DungGeunMo';
-	src: url('/DungGeunMo.woff2') format('woff2');
+	font-family: "DungGeunMo";
+	src: url("/DungGeunMo.woff2") format("woff2");
 	unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F;
-	size-adjust: 80%
+	size-adjust: 80%;
+}
+
+.ascii-art {
+	white-space: pre;
+	color: var(--color-primary);
+	font-size: 7.3px;
+	margin-bottom: 10px;
+	line-height: 1.3;
+	@media (min-width: 500px) {
+		font-size: 10px;
+	}
+	@media (min-width: 768px) {
+		font-size: 14px;
+	}
 }
