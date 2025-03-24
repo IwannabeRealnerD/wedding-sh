@@ -18,7 +18,7 @@ export const COMMAND_DEFINITIONS: { [key: string]: CommandDefinition } = {
 	"calendar add": {
 		action: () => {
 			window.open(
-				"https://calendar.google.com/calendar/u/0/r/eventedit?dates=20250531T120000/20250531T160000&text=Cinderella+and+Honggwan%27s+Wedding"
+				`https://calendar.google.com/calendar/u/0/r/eventedit?dates=20250531T120000/20250531T160000&text=${import.meta.env.VITE_PARTNER1_NAME}+and+${import.meta.env.VITE_PARTNER2_NAME}%27s+Wedding`
 			);
 			return "Opening google calendar to add wedding event...";
 		},
@@ -65,30 +65,30 @@ export const COMMAND_DEFINITIONS: { [key: string]: CommandDefinition } = {
 	},
 	"message groom": {
 		action: () => {
-			window.open(`sms:${import.meta.env.VITE_GROOM_PHONE_NUMBER}`);
-			return `Opening message app to send message to ${import.meta.env.VITE_GROOM_NAME}...`;
+			window.open(`sms:${import.meta.env.VITE_PARTNER2_PHONE_NUMBER}`);
+			return `Opening message app to send message to ${import.meta.env.VITE_PARTNER2_NAME}...`;
 		},
-		description: `Send message to ${import.meta.env.VITE_GROOM_NAME}`
+		description: `Send message to ${import.meta.env.VITE_PARTNER2_NAME}`
 	},
 	"message bride": {
 		action: () => {
-			window.open(`sms:${import.meta.env.VITE_BRIDE_PHONE_NUMBER}`);
-			return `Opening message app to send message to ${import.meta.env.VITE_BRIDE_NAME}...`;
+			window.open(`sms:${import.meta.env.VITE_PARTNER1_PHONE_NUMBER}`);
+			return `Opening message app to send message to ${import.meta.env.VITE_PARTNER1_NAME}...`;
 		},
-		description: `Send message to ${import.meta.env.VITE_BRIDE_NAME}`
+		description: `Send message to ${import.meta.env.VITE_PARTNER1_NAME}`
 	},
 	"call groom": {
 		action: () => {
-			window.open(`tel:${import.meta.env.VITE_GROOM_PHONE_NUMBER}`);
-			return `Opening phone app to call ${import.meta.env.VITE_GROOM_NAME}...`;
+			window.open(`tel:${import.meta.env.VITE_PARTNER2_PHONE_NUMBER}`);
+			return `Opening phone app to call ${import.meta.env.VITE_PARTNER2_NAME}...`;
 		},
-		description: `Call ${import.meta.env.VITE_GROOM_NAME}`
+		description: `Call ${import.meta.env.VITE_PARTNER2_NAME}`
 	},
 	"call bride": {
 		action: () => {
-			window.open(`tel:${import.meta.env.VITE_BRIDE_PHONE_NUMBER}`);
-			return `Opening phone app to call ${import.meta.env.VITE_BRIDE_NAME}...`;
+			window.open(`tel:${import.meta.env.VITE_PARTNER1_PHONE_NUMBER}`);
+			return `Opening phone app to call ${import.meta.env.VITE_PARTNER1_NAME}...`;
 		},
-		description: `Call ${import.meta.env.VITE_BRIDE_NAME}`
+		description: `Call ${import.meta.env.VITE_PARTNER1_NAME}`
 	}
 } as const;

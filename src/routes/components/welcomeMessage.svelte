@@ -19,7 +19,10 @@
 	<p class="text-primary">wedding-sh (v0.0.1)</p>
 	<div class="flex flex-col gap-2">
 		<h2 class="text-alert font-bold">[SYSTEM NOTIFICATION]: Incoming Wedding Event Detected</h2>
-		{@render infoBlock("Who's getting married?", "Cinderella Reimers & Honggwan Jeong")}
+		{@render infoBlock(
+			"Who's getting married?",
+			`${import.meta.env.VITE_PARTNER1_NAME} & ${import.meta.env.VITE_PARTNER2_NAME}`
+		)}
 		{@render infoBlock("Timestamp", "2025-05-31T12:00:00+09:00 (2025-05-31 12:00PM)")}
 		{@render infoBlock(
 			"Location",
