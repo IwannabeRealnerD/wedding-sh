@@ -20,7 +20,7 @@
 	<div class="flex flex-col gap-2">
 		<h2 class="text-alert font-bold">[SYSTEM NOTIFICATION]: Incoming Wedding Event Detected</h2>
 		{@render infoBlock("Who's getting married?", "Cinderella Reimers & Honggwan Jeong")}
-		{@render infoBlock("Timestamp", "2025-05-31T11:00:00+09:00 (2025-05-31 11:00AM)")}
+		{@render infoBlock("Timestamp", "2025-05-31T12:00:00+09:00 (2025-05-31 12:00PM)")}
 		{@render infoBlock(
 			"Location",
 			"Nuage Garden(누아주가든)\n[Korea > Gyeonggi-do > Hanam > Misa]"
