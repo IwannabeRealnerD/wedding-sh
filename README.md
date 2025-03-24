@@ -8,8 +8,6 @@
 </div>
 
 <div align="center">
-    <p>Interactive wedding invitation that works like a shell but runs in web browser.</p>
-    <br />
     <a href="https://iwannaberealnerd.github.io/wedding-sh/">Deployed Link</a>
     ·
     <a href="https://github.com/IwannabeRealnerD/wedding-sh/issues">Report Bug</a>
@@ -18,12 +16,13 @@
 </div>
 
 <div align="center">
+  <p>Interactive wedding invitation that works like a shell but runs in web browser.</p>
   <img src="https://img.shields.io/badge/svelte-FF3200?style=for-the-badge&logo=svelte&logoColor=white">
   <img src="https://img.shields.io/badge/tailwindcss-06b6d4?style=for-the-badge&logo=tailwindcss&logoColor=white">
   <img src="https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white">
   <img src="https://img.shields.io/badge/vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white">
 </div>
-
+<br/>
 <div align="center">
   <img src="images/screenshot.png" alt="screenshot" >
 </div>
