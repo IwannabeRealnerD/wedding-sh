@@ -1,8 +1,9 @@
-import { COMMAND_ACTIONS, COMMAND_KEYS } from "$lib/constants/command";
+import { COMMAND_KEYS } from "$lib/constants/command";
 import { TERMINAL_HISTORY_KEY } from "$lib/constants/localStorageKey";
 import type { CommandType } from "$lib/types/storage";
 import { historyLengthCutter } from "$lib/utils/command";
 import { getLocalStorageItem, setLocalStorageItem } from "$lib/utils/storage";
+import { COMMAND_DEFINITIONS } from "$settings";
 
 export const findNextIndex = (targetArray: unknown[], currentIndex: number) => {
 	return targetArray.length - 1 <= currentIndex ? 0 : currentIndex + 1;
@@ -22,9 +23,23 @@ export const findAvailableCommand = (inputCommand: string) => {
 	return filteredCommandArr;
 };
 
-export const outputCreator = (inputCommand: string) => {
-	const action = COMMAND_ACTIONS[inputCommand];
-	return action ? action() : `wedding-sh: command not found: ${inputCommand}`;
+export const outputCreator = (inputCommand: string): string => {
+	if (!inputCommand?.trim()) {
+		return "wedding-sh: please enter a command";
+	}
+
+	const action = COMMAND_DEFINITIONS[inputCommand];
+	if (action) {
+		return action.action();
+	}
+
+	const lowerCaseCommand = inputCommand.toLowerCase();
+	const isAction = COMMAND_DEFINITIONS[lowerCaseCommand];
+	if (isAction) {
+		return `wedding-sh: did you mean: ${lowerCaseCommand}?`;
+	}
+
+	return `wedding-sh: command not found: ${inputCommand}`;
 };
 
 export const putLocalStorageArr = (commandObj: CommandType) => {
