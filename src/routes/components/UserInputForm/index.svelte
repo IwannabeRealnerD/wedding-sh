@@ -23,6 +23,8 @@
 		inputCommand = command;
 	};
 
+	let isComposing = false;
+
 	let availableCommands = $derived(findAvailableCommand(inputCommand));
 	let isWholeCommand = $derived(COMMAND_KEYS.find((value) => value === inputCommand));
 
@@ -68,12 +70,11 @@
 			`h-20 w-full resize-none overflow-hidden border-none bg-conic-270 p-0 caret-white focus:outline-none`,
 			commandValidator(inputCommand, availableCommands)
 		)}
+		oncompositionstart={() => (isComposing = true)}
+		oncompositionend={() => (isComposing = false)}
 		name="command"
 		onkeydown={(event) => {
-			if (event.key === "Enter" && !event.shiftKey) {
-				if (isSuggestionVisible) {
-					return;
-				}
+			if (event.key === "Enter" && !isComposing) {
 				event.preventDefault();
 				onSubmit();
 			}
