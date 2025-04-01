@@ -35,8 +35,9 @@ export const outputCreator = (inputCommand: string): string => {
 
 	const lowerCaseCommand = inputCommand.toLowerCase();
 	const isAction = COMMAND_DEFINITIONS[lowerCaseCommand];
+
 	if (isAction) {
-		return `wedding-sh: did you mean: ${lowerCaseCommand}?`;
+		return `wedding-sh: It looks like you used uppercase letters.\nDid you mean: ${lowerCaseCommand} ?`;
 	}
 
 	return `wedding-sh: command not found: ${inputCommand}`;
